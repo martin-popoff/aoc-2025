@@ -39,6 +39,7 @@ pub fn solve(input: Vec<String>, part2: bool) -> i32 {
     password
 }
 
+#[allow(dead_code)]
 pub fn solve_pretty(input: Vec<String>, part2: bool) -> i32 {
     let mut count = START;
     let mut password = 0;
