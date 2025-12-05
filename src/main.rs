@@ -3,10 +3,11 @@ use crate::shared::*;
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 mod shared;
 
 fn main() {
-    day3();
+    day4();
 }
 
 #[allow(dead_code)]
@@ -33,6 +34,7 @@ fn day2() {
     );
 }
 
+#[allow(dead_code)]
 fn day3() {
     println!(
         "Day 3 solution: {}",
@@ -41,5 +43,16 @@ fn day3() {
     println!(
         "Day 3 part 2 solution: {}",
         day3::solve(read_file_line_by_line("3"), 12)
+    );
+}
+
+fn day4() {
+    println!(
+        "Day 4 solution: {}",
+        day4::solve(read_file_line_by_line("4"), false)
+    );
+    println!(
+        "Day 4 part 2 solution: {}",
+        day4::solve(read_file_line_by_line("4"), true)
     );
 }
