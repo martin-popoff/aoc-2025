@@ -5,10 +5,11 @@ mod day2;
 mod day3;
 mod day4;
 mod day5;
+mod day6;
 mod shared;
 
 fn main() {
-    day5();
+    day6();
 }
 
 #[allow(dead_code)]
@@ -59,6 +60,7 @@ fn day4() {
     );
 }
 
+#[allow(dead_code)]
 fn day5() {
     println!(
         "Day 5 solution: {}",
@@ -67,5 +69,16 @@ fn day5() {
     println!(
         "Day 5 part 2 solution: {}",
         day5::solve(read_file_from_two_parts("5"), true)
+    );
+}
+
+fn day6() {
+    // println!(
+    //     "Day 6 solution: {}",
+    //     day6::solve(read_file_line_by_line_trimmed_whitespace("6"), false)
+    // );
+    println!(
+        "Day 6 part 2 solution: {}",
+        day6::solve(read_file_line_by_line_trimmed_whitespace("6_example"), true)
     );
 }

@@ -50,3 +50,18 @@ pub fn read_file_from_two_parts(day: &str) -> (Vec<(u64, u64)>, Vec<u64>) {
     let group2: Vec<u64> = lines.map(|line| line.parse::<u64>().unwrap()).collect();
     (group1, group2)
 }
+
+pub fn read_file_line_by_line_trimmed_whitespace(day: &str) -> Vec<Vec<String>> {
+    let file = File::open(format!("./input/day{}.txt", day)).expect("Could not open file");
+    let reader = BufReader::new(file);
+
+    reader
+        .lines()
+        .map(|line| {
+            line.expect("Could not read line")
+                .split_ascii_whitespace()
+                .map(String::from)
+                .collect()
+        })
+        .collect()
+}
