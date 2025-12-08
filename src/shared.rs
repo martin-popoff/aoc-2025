@@ -26,3 +26,27 @@ pub fn read_file_first_line_with_delimiter(day: &str, delimiter: char) -> Vec<St
         .map(String::from)
         .collect()
 }
+
+pub fn read_file_from_two_parts(day: &str) -> (Vec<(u64, u64)>, Vec<u64>) {
+    let file = File::open(format!("./input/day{}.txt", day)).expect("Could not open file");
+    let reader = BufReader::new(file);
+
+    let mut lines = reader
+        .lines()
+        .map(|line| line.expect("Could not read line"));
+
+    let group1: Vec<(u64, u64)> = lines
+        .by_ref()
+        .map_while(|line| {
+            if line.is_empty() {
+                None
+            } else {
+                let (lower, upper) = line.split_once('-').unwrap();
+                Some((lower.parse().unwrap(), upper.parse().unwrap()))
+            }
+        })
+        .collect();
+
+    let group2: Vec<u64> = lines.map(|line| line.parse::<u64>().unwrap()).collect();
+    (group1, group2)
+}

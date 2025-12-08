@@ -1,4 +1,3 @@
-const ROLL: char = '@';
 const EMPTY: char = '.';
 
 pub fn solve(input: Vec<String>, part2: bool) -> u64 {
@@ -22,7 +21,7 @@ fn remove(input: Vec<String>) -> (Vec<String>, u64) {
     let mut copy = input.clone();
     let mut result = 0;
     for (i, line) in input.iter().enumerate() {
-        for (j, char) in line.char_indices().filter(|&(_, char)| char != EMPTY) {
+        for (j, _) in line.char_indices().filter(|&(_, char)| char != EMPTY) {
             let mut total: u8 = 0;
             if i > 0 && j > 0 && input[i - 1].chars().nth(j - 1).unwrap() != EMPTY {
                 total += 1;
