@@ -73,12 +73,12 @@ fn day5() {
 }
 
 fn day6() {
-    // println!(
-    //     "Day 6 solution: {}",
-    //     day6::solve(read_file_line_by_line_trimmed_whitespace("6"), false)
-    // );
+    println!(
+        "Day 6 solution: {}",
+        day6::solve(read_file_line_by_line("6"), false)
+    );
     println!(
         "Day 6 part 2 solution: {}",
-        day6::solve(read_file_line_by_line_trimmed_whitespace("6_example"), true)
+        day6::solve(read_file_line_by_line("6"), true)
     );
 }
