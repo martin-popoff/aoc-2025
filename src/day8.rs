@@ -2,13 +2,12 @@ const TAKE_FIRST_N_DISTANCES: usize = 1000;
 const TAKE_FIRST_N_CIRCUITS: usize = 3;
 
 pub fn solve(input: Vec<(i64, i64, i64)>, part2: bool) -> usize {
-    let mut result: usize = 0;
     let mut distances: Vec<(f64, usize, usize)> = vec![];
-    for (i, coords) in input.iter().rev().skip(1).rev().enumerate() {
-        for j in i + 1..input.len() {
-            let part = (coords.0 - input[j].0).pow(2) as f64
-                + (coords.1 - input[j].1).pow(2) as f64
-                + (coords.2 - input[j].2).pow(2) as f64;
+    for (i, from) in input.iter().rev().skip(1).rev().enumerate() {
+        for (j, to) in input.iter().enumerate().skip(i + 1) {
+            let part = (from.0 - to.0).pow(2) as f64
+                + (from.1 - to.1).pow(2) as f64
+                + (from.2 - to.2).pow(2) as f64;
             distances.push((part.sqrt(), i, j));
         }
     }
@@ -71,14 +70,12 @@ pub fn solve(input: Vec<(i64, i64, i64)>, part2: bool) -> usize {
     connections.reverse();
 
     if part2 {
-        result = input[last.0].0 as usize * input[last.1].0 as usize;
+        input[last.0].0 as usize * input[last.1].0 as usize
     } else {
-        result = connections
+        connections
             .iter()
             .take(TAKE_FIRST_N_CIRCUITS)
             .map(|v| v.len())
-            .product::<usize>();
+            .product::<usize>()
     }
-
-    result
 }

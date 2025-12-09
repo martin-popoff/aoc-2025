@@ -11,7 +11,7 @@ mod day8;
 mod shared;
 
 fn main() {
-    day8();
+    day2();
 }
 
 #[allow(dead_code)]
