@@ -50,3 +50,20 @@ pub fn read_file_from_two_parts(day: &str) -> (Vec<(u64, u64)>, Vec<u64>) {
     let group2: Vec<u64> = lines.map(|line| line.parse::<u64>().unwrap()).collect();
     (group1, group2)
 }
+
+pub fn read_file_line_by_line_coordinates(day: &str) -> Vec<(i64, i64, i64)> {
+    let file = File::open(format!("./input/day{}.txt", day)).expect("Could not open file");
+    let reader = BufReader::new(file);
+
+    reader
+        .lines()
+        .map(|line| {
+            let coords: Vec<i64> = line
+                .expect("Could not read line")
+                .split(',')
+                .map(|c| c.parse::<i64>().unwrap())
+                .collect();
+            (coords[0], coords[1], coords[2])
+        })
+        .collect()
+}
