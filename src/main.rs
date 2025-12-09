@@ -86,12 +86,12 @@ fn day6() {
 }
 
 fn day7() {
-    // println!(
-    //     "Day 7 solution: {}",
-    //     day7::solve(read_file_line_by_line("7"), false)
-    // );
+    println!(
+        "Day 7 solution: {}",
+        day7::solve(read_file_line_by_line("7"), false)
+    );
     println!(
         "Day 7 part 2 solution: {}",
-        day7::solve(read_file_line_by_line("7_example"), true)
+        day7::solve(read_file_line_by_line("7"), true)
     );
 }

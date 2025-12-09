@@ -14,6 +14,7 @@ pub fn solve(input: Vec<String>, part2: bool) -> u64 {
     // taken the "visual" approach this time
     for (i, line) in input.iter().enumerate() {
         for (j, char) in line.char_indices() {
+            // hacky edge cases but thats life
             if char == SPLIT && copy[i - 1].chars().nth(j).unwrap() == BEAM {
                 copy[i].replace_range(j - 1..j, &BEAM.to_string());
                 copy[i].replace_range(j + 1..j + 2, &BEAM.to_string());
@@ -26,16 +27,11 @@ pub fn solve(input: Vec<String>, part2: bool) -> u64 {
                 triangle[i][j - 1] += triangle[i - 1][j];
                 triangle[i][j + 1] += triangle[i - 1][j];
             }
-            if i > 0
-                && char == EMPTY
-                && copy[i - 1].chars().nth(j).unwrap() == BEAM
-                && copy[i].chars().nth(j + 1).unwrap_or(EMPTY) != SPLIT
-            {
+            if i > 0 && triangle[i][j] == 0 && char == EMPTY {
                 copy[i].replace_range(j..j + 1, &BEAM.to_string());
                 triangle[i][j] = triangle[i - 1][j];
             }
         }
-        println!("{:?} {}", triangle[i], copy[i]);
     }
     if part2 {
         result = triangle.last().unwrap().iter().sum();
